@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/sergey/Desktop/Linux basics/hw4/seminar04/task02/src/fast.cpp
+fast.hpp
+/home/sergey/Desktop/Linux basics/hw4/seminar04/task02/src/fast.hpp
+
+/home/sergey/Desktop/Linux basics/hw4/seminar04/task02/src/fast.hpp
+cstddef
+-
+
+/home/sergey/Desktop/Linux basics/hw4/seminar04/task02/src/main.cpp
+iostream
+-
+fast.hpp
+/home/sergey/Desktop/Linux basics/hw4/seminar04/task02/src/fast.hpp
+

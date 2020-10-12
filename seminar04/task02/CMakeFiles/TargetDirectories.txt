@@ -1,0 +1,4 @@
+/home/sergey/Desktop/Linux basics/hw4/seminar04/task02/CMakeFiles/rebuild_cache.dir
+/home/sergey/Desktop/Linux basics/hw4/seminar04/task02/CMakeFiles/edit_cache.dir
+/home/sergey/Desktop/Linux basics/hw4/seminar04/task02/CMakeFiles/fast.dir
+/home/sergey/Desktop/Linux basics/hw4/seminar04/task02/CMakeFiles/test.dir
