@@ -1,0 +1,83 @@
+1) определить MAC-адрес: ifconfig -a
+
+enp61s0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.100.16  netmask 255.255.255.0  broadcast 192.168.100.255
+        inet6 fe80::e32:1002:ebbf:639d  prefixlen 64  scopeid 0x20<link>
+        ether 30:9c:23:8e:40:76  txqueuelen 1000  (Ethernet)
+        RX packets 191458  bytes 203762293 (203.7 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 108368  bytes 16246460 (16.2 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+        device interrupt 17  
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 9335  bytes 893654 (893.6 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 9335  bytes 893654 (893.6 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+wlp62s0: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
+        ether 9c:b6:d0:20:a7:f5  txqueuelen 1000  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+MAC-адрес - 30:9c:23:8e:40:76
+
+
+2) Отключить и включить сетевой интерфейс: sudo ifconfig enp61s0 down ; sudo ifconfig enp61s0 up
+
+
+3) Проверить доступность узлов 8.8.8.8 и http://www.debian.org: ping 8.8.8.8 ; ping debian.org
+
+PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
+64 bytes from 8.8.8.8: icmp_seq=1 ttl=111 time=22.7 ms
+64 bytes from 8.8.8.8: icmp_seq=2 ttl=111 time=22.7 ms
+64 bytes from 8.8.8.8: icmp_seq=3 ttl=111 time=22.6 ms
+64 bytes from 8.8.8.8: icmp_seq=4 ttl=111 time=22.7 ms
+64 bytes from 8.8.8.8: icmp_seq=5 ttl=111 time=22.7 ms
+^C
+--- 8.8.8.8 ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 4007ms
+rtt min/avg/max/mdev = 22.669/22.712/22.749/0.137 ms
+
+PING debian.org (128.31.0.62) 56(84) bytes of data.
+64 bytes from mirror-csail.debian.org (128.31.0.62): icmp_seq=1 ttl=55 time=134 ms
+64 bytes from mirror-csail.debian.org (128.31.0.62): icmp_seq=2 ttl=55 time=134 ms
+64 bytes from mirror-csail.debian.org (128.31.0.62): icmp_seq=3 ttl=55 time=134 ms
+64 bytes from mirror-csail.debian.org (128.31.0.62): icmp_seq=4 ttl=55 time=134 ms
+64 bytes from mirror-csail.debian.org (128.31.0.62): icmp_seq=5 ttl=55 time=134 ms
+^C
+--- debian.org ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 4006ms
+rtt min/avg/max/mdev = 134.617/134.769/134.945/0.255 ms
+
+Оба узла доступны
+
+
+4) Отобразить трассу до http://www.ubuntu.com: tracerout ubuntu.com
+
+traceroute to ubuntu.com (91.189.91.44), 30 hops max, 60 byte packets
+ 1  _gateway (192.168.100.1)  0.681 ms  0.649 ms  25.340 ms
+ 2  78.81.176.1 (78.81.176.1)  4.609 ms  7.908 ms  7.870 ms
+ 3  bbn.212-48-204-210.nwtelecom.ru (212.48.204.210)  5.123 ms  5.086 ms  5.313 ms
+ 4  87.226.133.56 (87.226.133.56)  33.619 ms  33.283 ms  33.546 ms
+ 5  10gigabitethernet1-2.core1.sto1.he.net (194.68.123.187)  32.822 ms  33.091 ms  33.057 ms
+ 6  * * *
+ 7  100ge16-1.core1.lon2.he.net (72.52.92.213)  72.078 ms  72.256 ms  73.562 ms
+ 8  100ge13-2.core1.nyc4.he.net (72.52.92.166)  139.764 ms  138.727 ms  141.321 ms
+ 9  ve951.core2.nyc4.he.net (184.104.195.170)  128.588 ms  127.498 ms  126.444 ms
+10  100ge3-2.core1.bos1.he.net (184.105.64.54)  145.014 ms  145.347 ms  144.087 ms
+11  209.51.171.154 (209.51.171.154)  145.570 ms  142.963 ms  143.655 ms
+12  elvira.canonical.com (91.189.91.44)  131.098 ms  133.215 ms  130.971 ms
+
+5) Отобразить статистику работы сетевых интерфейсов: netstat -ai
+Kernel Interface table
+Iface      MTU    RX-OK RX-ERR RX-DRP RX-OVR    TX-OK TX-ERR TX-DRP TX-OVR Flg
+enp61s0   1500   204744      0      0 0        117155      0      0      0 BMRU
+lo       65536    10636      0      0 0         10636      0      0      0 LRU
+wlp62s0   1500        0      0      0 0             0      0      0      0 BMU
