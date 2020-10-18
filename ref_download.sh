@@ -1,2 +1,7 @@
 #!/bin/sh -l
-echo "$(grep -o 'https://[a-z0-9./]*' README.md)" > $1
+mkdir refs
+cd refs
+for ref in "$(egrep -o 'http[s]?://[a-zA-Z0-9./%_\-]*' ../README.md)"
+do
+wget $ref
+done

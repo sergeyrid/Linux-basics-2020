@@ -1,6 +1,0 @@
-https://help.ubuntu.ru/wiki/
-https://ru.wikipedia.org/wiki/
-https://daniel.haxx.se/docs/curl
-https://github.com/features/actions
-https://help.github.com/en/actions/getting
-https://help.github.com/en/actions/building
